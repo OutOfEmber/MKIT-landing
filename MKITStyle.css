@@ -4,11 +4,12 @@
 }
 header{
     text-wrap: wrap;
-    font-size:120px;
+    font-size:100px;
     color:#150060;
     font-weight: 600;
     font-family: SemiBold;
     line-height: 95px;
+    width:100%;
 }
 nav{
     border-style: dotted;
@@ -147,7 +148,7 @@ a{
     flex-grow:1;
     border-radius:25px;
     width: 540px;
-    height:491px;
+    height:5%;
 }
 .sector:nth-child(1){
     margin-right:20px;
@@ -159,9 +160,6 @@ a{
     padding:20px;
     margin:20px;
     font-size:30px;
-}
-.sText:nth-child(1){
-    margin-bottom: 70px;
 }
 .sText:nth-child(2){
     margin-bottom: 20px;
@@ -175,10 +173,11 @@ a{
     background-color: white;   
     margin:20px;
     font-size:30px;
-    width:80%;
+    width:90%;
 }
 .poshalko img{
-    margin-top:40px;
+    display: flex;
+    justify-content: end;
     border-radius:30px;
     background-color: white;
     width:59px ;
