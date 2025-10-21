@@ -1,3 +1,22 @@
+*{
+    scroll-behavior: smooth;
+}
+#main:target{
+    animation: main;
+    animation-duration: 0.6s;
+}
+#specials:target{
+    animation: specials;
+    animation-duration: 1s;
+}
+#aboutus:target{
+    animation: aboutus;
+    animation-duration: 0.6s;
+}
+#contacts:target{
+    animation: contacts;
+    animation-duration: 2s;
+}
 @font-face {
     font-family: SemiBold;
     src: url('../fonts/Inter-SemiBold.otf');
@@ -201,7 +220,7 @@ a{
     border-radius:20px ;
     text-align: center;
     height: 55px;
-    margin:20px;
+    margin:20px; 
 }
 .sectorS{
     font-family: SemiBold;
@@ -268,3 +287,7 @@ a{
     width:392px;
     height:235px;
 }
+@keyframes main{0%{background-color:#D9D9D9;}50%{background-color: #ff7e7e;} 100% {background-color:#D9D9D9;}}
+@keyframes specials{0%{background-color:#D9D9D9;}50%{background-color: #7eff93;} 100% {background-color:#D9D9D9;}}
+@keyframes aboutus{0%{background-color:#D9D9D9;}50%{background-color: #7e87ff;} 100% {background-color:#D9D9D9;}}
+@keyframes contacts{0%{background-color:#D9D9D9;}50%{background-color: #ffd27e;} 100% {background-color:#D9D9D9;}}
