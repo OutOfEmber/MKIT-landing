@@ -1,3 +1,155 @@
+let products = [
+    {id: 1, name: 'Футболка', price: 500, category: 'clothes'},
+    {id: 2, name: 'Телефон', price: 30000, category: 'electronics'},
+    {id: 3, name: 'Книга', price: 800, category: 'books'},
+    {id: 4, name: 'Джинсы', price: 1200, category: 'clothes'}
+  ];
+  let cart=[];
+function addToCart(productId,count) {
+    let product = products.find(item=>item.id == productId); 
+    if(!product){
+    console.log('Нет такого!');
+    return;
+    }
+    let  card= cart.find(item=>item.productId == productId); 
+    if(!card){
+        cart.push({productId,count});
+        console.log('Товар добавлен');
+        return;
+    }
+    else{
+        card.count += count
+        console.log('Количество увеличено');
+        return;
+    }
+    //    cart.splice(product,product,cart.count+=count);
+}
+function removeFromCart(productId) {
+    let product = products.find(item=> item.id == productId);
+    if(!product){
+        console.log('Нет такого!');
+        return;
+        }  
+    let card = cart.find(item => item.productId == productId)
+    if(!card){
+        console.log('Нет такого!');
+        return;
+    }else{
+        cart.splice(card-1,1);//cart.filter(item=> item.id!==card);
+        console.log('Товар удален');
+        return;
+    }
+}
+function updateCount(productId,count) {
+    let card = cart.find(item => item.productId == productId)
+    if(!card){
+        console.log('Нет такого в корзине!');
+        return;
+    }
+    else{
+        cart.splice(card-1,1);
+        cart.push({productId,count});
+        console.log('Количество изменено');
+        return;
+    }
+}
+function getCartTotal() {
+    
+    return cart.reduce((total,item)=>{
+        let product = products.find(p => p.id == item.productId)
+        return total + product.price * item.count
+    }, 0)
+
+}
+addToCart(1,1);
+addToCart(4,1);
+addToCart(4,1);
+removeFromCart(1);
+updateCount(4,3);
+console.log(cart);
+console.log(getCartTotal());
+// removeFromCart(4);
+// console.log(cart);
+/*06.11.2025
+------------------------------------------------------------------------------------
+const users = [
+    { id: 1, name: "Алексей", age: 25, isActive: true },
+    { id: 2, name: "Мария", age: 17, isActive: false },
+    { id: 3, name: "Иван", age: 30, isActive: true },
+    { id: 4, name: "Ольга", age: 16, isActive: true },
+    { id: 5, name: "Петр", age: 22, isActive: false }
+  ];
+let adult=users.filter(item=>item.age>18);
+let actives=users.filter(item=>item.isActive==true)
+function findUserByld(id) {
+    id=users.filter(item=>item.id==id);
+    return id;
+}
+console.log(adult);
+console.log(actives);
+console.log(findUserByld(2));
+------------------------------------------------------------------------------------
+const numbers=[10,-2,7,15,-8,3,0,12];
+let sum=0;
+function sumPositive(arr){
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]>0){
+            sum+=arr[i  ];
+        }
+    }            
+    return sum;
+}
+let max=0;
+function findMax(arr){
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]>max){
+            max=arr[i];
+        }
+    }            
+    return max;
+}
+let doubled=numbers.map(function(num) {return num*2});
+console.log(doubled); 
+console.log(findMax(numbers));
+console.log(sumPositive(numbers));
+------------------------------------------------------------------------------------
+*/
+
+/*05.11.2025
+------------------------------------------------------------------------------------
+const shoppingList=['Milk','Bread','Apples','Cheese','Fish'];
+shoppingList.push('Butter');
+shoppingList.unshift('Sugar');
+shoppingList.splice(shoppingList.indexOf('Fish'),1);
+if(shoppingList.indexOf('Cheese')!=-1){
+    let cheeseIndex = shoppingList.indexOf('Cheese');
+    shoppingList[cheeseIndex] = 'Chicken';
+}
+const vegetables=['Carrot','Onion','Potato'];
+let combo=shoppingList.concat(vegetables);
+combo.sort();
+console.log(`Apples in list: ${combo.includes('Apples')}`);
+combo.forEach((product,index) => {
+    console.log(`Element: ${index}: ${product}`);
+})
+function addItem(itemName) {
+    console.log(`\n -------------------------`);
+    
+    itemName[0].toUpperCase();
+    
+    combo.push(itemName);
+    combo.sort();
+
+    combo.forEach((product,index) => {
+        console.log(`Element: ${index}: ${product}`);
+    })
+}
+function removeItem(itemName){
+    combo.splice(combo.indexOf(itemName),1)
+}
+console.log(addItem("cheto"));
+console.log(removeItem("Milk"));
+------------------------------------------------------------------------------------*/
 
 /*28.10.2025
 ------------------------------------------
