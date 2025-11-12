@@ -61,6 +61,18 @@ function getCartTotal() {
     }, 0)
 
 }
+function getCartItems(){
+    return cart.map(cartItem=>{
+        let product=products.find(p=>p.id===cartItem.productId);
+        return{
+            product:product,
+            count:cartItem.count
+        };
+    });
+}
+function clearCart() {
+    
+}
 addToCart(1,1);
 addToCart(4,1);
 addToCart(4,1);
@@ -68,6 +80,8 @@ removeFromCart(1);
 updateCount(4,3);
 console.log(cart);
 console.log(getCartTotal());
+console.log(getCartItems());
+clearCart();
 // removeFromCart(4);
 // console.log(cart);
 /*06.11.2025
