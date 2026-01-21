@@ -1,4 +1,4 @@
-let races = ['Человек','Эльф','Каджит','Орк','Вампир','Оборотень'];
+/*
 let raceName=prompt(races,'Введите вашу расу');
 if(raceName===null){
     console.log("Вы отменили ввод");
@@ -13,21 +13,30 @@ if(races.includes(correctedName)){
     console.log("Расы " + correctedName + " не существует!" );
     console.log("Доступные расы:" + races.join(", "));
 }
+*/
+let races = ['Человек','Эльф','Каджит','Орк','Вампир','Оборотень'];
 function getRace() {
+
+    let vibor=false;
+    while(!vibor){
     let input = prompt('Введите вашу расу:\n' + races.join(', '));
     if (input === null) {
-        return alert("Вы отменили ввод");
+        alert("Вы отменили ввод");
+        continue;
     }
     input = input.trim();
     if (input === "") {
-        return alert("Вы ничего не ввели!");
+        alert("Вы ввели пустую строку")
+        continue;
     }
     let formattedRace = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
     if (races.includes(formattedRace)) {
         return formattedRace;
     } else {
-        return alert("Такой расы нет!");
+        alert("Вы ввели не существующую расу")
+        continue;
     }
+}
 }
 let user1 = {
     name:"",
@@ -53,7 +62,7 @@ console.log(user1);
 console.log(user2);
 console.log(user3);
 let users=[user1,user2,user3];
-let usersCopy=[...users];
+let usersCopy=users.slice();
 usersCopy.forEach(user =>{
     user.level=1;
 });
