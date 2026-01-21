@@ -1,4 +1,65 @@
-let products = [
+let races = ['Человек','Эльф','Каджит','Орк','Вампир','Оборотень'];
+let raceName=prompt(races,'Введите вашу расу');
+if(raceName===null){
+    console.log("Вы отменили ввод");
+}else if(raceName.trim()=== ""){
+    console.log("Вы ввели пустую строку");
+}
+raceName=raceName.trim();
+let correctedName = raceName.charAt(0).toUpperCase()+raceName.slice(1).toLowerCase();
+if(races.includes(correctedName)){
+    console.log("Вы выбрали расу:" + correctedName);    
+}else{
+    console.log("Расы " + correctedName + " не существует!" );
+    console.log("Доступные расы:" + races.join(", "));
+}
+function getRace() {
+    let input = prompt('Введите вашу расу:\n' + races.join(', '));
+    if (input === null) {
+        return alert("Вы отменили ввод");
+    }
+    input = input.trim();
+    if (input === "") {
+        return alert("Вы ничего не ввели!");
+    }
+    let formattedRace = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+    if (races.includes(formattedRace)) {
+        return formattedRace;
+    } else {
+        return alert("Такой расы нет!");
+    }
+}
+let user1 = {
+    name:"",
+    race:""
+}
+user1.name = prompt("Введите имя персонажа");
+user1.race = getRace();
+
+let user2 = {
+    name:"",
+    race:""
+}
+user2.name = prompt("Введите имя персонажа");
+user2.race = getRace();
+
+let user3 = {
+    name:"",
+    race:""
+}
+user3.name = prompt("Введите имя персонажа");
+user3.race = getRace();
+console.log(user1);
+console.log(user2);
+console.log(user3);
+let users=[user1,user2,user3];
+let usersCopy=[...users];
+usersCopy.forEach(user =>{
+    user.level=1;
+});
+usersCopy.sort((a,b)=>a.name.localeCompare(b.name));
+console.log(usersCopy);
+/*let products = [
     {id: 1, name: 'Футболка', price: 500, category: 'clothes'},
     {id: 2, name: 'Телефон', price: 30000, category: 'electronics'},
     {id: 3, name: 'Книга', price: 800, category: 'books'},
@@ -71,7 +132,33 @@ function getCartItems(){
     });
 }
 function clearCart() {
+    cart=[];
+    console.log('Корзина очищена');
+}
+function displayCart() {
+    if (cart.length === 0) {
+        console.log('Корзина пуста');
+        return;
+    }
+    console.log('Содержимое корзины:');
+    cart.forEach(item => {
+        const product = products.find(p => p.id === item.productId);
+        console.log(`${product.name}: ${item.count} шт. × ${product.price} руб. = ${product.price * item.count} руб.`);
+    });
+    console.log(`Общая сумма: ${getCartTotal()} руб.`);
+}
+function applyDiscount(total, discountPercent) {
+    if (discountPercent < 0 || discountPercent > 100) {
+        console.log('Процент скидки должен быть от 0 до 100');
+        return total;
+    }
     
+    const discountAmount = total * (discountPercent / 100);
+    const finalPrice = total - discountAmount;
+    
+    console.log(`Скидка ${discountPercent}%: ${discountAmount} руб.`);
+    console.log(`Итоговая цена после скидки: ${finalPrice} руб.`);
+    return finalPrice;
 }
 addToCart(1,1);
 addToCart(4,1);
@@ -81,7 +168,13 @@ updateCount(4,3);
 console.log(cart);
 console.log(getCartTotal());
 console.log(getCartItems());
+applyDiscount(3600,2);
+displayCart();
 clearCart();
+displayCart();
+
+конец семестра
+*/
 // removeFromCart(4);
 // console.log(cart);
 /*06.11.2025
